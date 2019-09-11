@@ -1,0 +1,20 @@
+Dataset Information:
+Label: 
+  Party (-1 = democrat, 1 = republican)
+Features: 
+  bill_1: handicapped-infants: (1 = y, -1 = n)
+  bill_2: water-project-cost-sharing: (1 = y, -1 = n)
+  bill_3: adoption-of-the-budget-resolution: (1 = y, -1 = n)
+  bill_4: physician-fee-freeze: (1 = y, -1 = n)
+  bill_5: el-salvador-aid: (1 = y, -1 = n)
+  bill_6: religious-groups-in-schools: (1 = y, -1 = n)
+  bill_7: anti-satellite-test-ban: (1 = y, -1 = n)
+  bill_8: aid-to-nicaraguan-contras: (1 = y, -1 = n)
+  bill_9: mx-missile: (1 = y, -1 = n)
+  bill_10: immigration: (1 = y, -1 = n)
+  bill_11: synfuels-corporation-cutback: (1 = y, -1 = n)
+  bill_12: education-spending: (1 = y, -1 = n)
+  bill_13: superfund-right-to-sue: (1 = y, -1 = n)
+  bill_14: crime: (1 = y, -1 = n)
+  bill_15: duty-free-exports: (1 = y, -1 = n)
+  bill_16: export-administration-act-south-africa: (1 = y, -1 = n)

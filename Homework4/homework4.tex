@@ -1,0 +1,98 @@
+\documentclass[a4paper]{article}
+\usepackage[cm]{fullpage}
+
+\special{papersize = 8.5in, 11in}
+\setlength{\pdfpageheight}{11in}
+\setlength{\pdfpagewidth}{8.5in}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{framed}
+\usepackage{enumitem}
+\usepackage{setspace}
+
+\renewcommand{\baselinestretch}{1.85} 
+
+\title{COMPSCI 671D: Homework 4}
+\date{Due: February 28, 2019}
+
+\begin{document}
+
+\maketitle
+\textbf{Instructions:} This homework is out of \textit{100 points}. All the questions in this homework are mandatory. We expect mathematical rigour for required proofs and derivations. The final answers of the homework problems should be submitted as a single PDF file (we do not appreciate you using any other format for submissions). If we require you to also report your code, you must embed it in the PDF you are submitting. It will be okay if you also feel the need to submit a separate code file along with the PDF to support your answers. We recommend using well typed \hyperlink{https://www.latex-project.org/}{\textcolor{violet}{\LaTeX}} solutions. Figures, plots, and tables should be well captioned and indexed. Please start answering a new problem on new page. You are welcome to look up the answers on the Internet in order to prove these, but you must type the proofs yourself. Do not ask your classmates to provide a link for you to the answers, and please do not share your link with others; each student must look it up individually because we think this is a good way to learn. If you have referred any web sources, research papers or textbooks you must cite them. Thank you!
+\rule{\textwidth}{0.5pt}\\
+\section{Convexity I \textit{(20 Points)} }
+Prove/disprove the following properties for convex function(s):
+\begin{enumerate}
+    \item \textbf{\textit{(3 points).}} The sum of two convex functions is also convex.
+    \item \textbf{\textit{(9 points).}} Let $f(x) = h(g_1(x),g_2(x),..,g_n(x)))$. Then for each of the following cases, prove that $f$ is convex:
+    \begin{itemize}
+        \item \textbf{\textit{(3 points).}} $h$ is convex, $\forall i \in \{1,..,n\}$ $g_i$ is a convex function and $h$ is increasing in its $i$-th component.
+        \item \textbf{\textit{(3 points).}} $h$ is convex, $\forall i \in \{1,..,n\}$ $g_i$ are affine functions.
+        \item \textbf{\textit{(3 points).}} $h$ is convex, $\forall i \in \{1,..,n\}$ $g_i$ is a concave function and $h$ is decreasing in its $i$-th component.
+    \end{itemize}
+    \item \textbf{\textit{(8 points).}} The maximum of a convex function $f$ over the polyhedron $P$ is achieved at one of its vertices.
+\end{enumerate}
+\pagebreak
+\section{Convexity II \textit{(30 Points)}}
+Let the primal optimization problem be: $\min_{x \in \mathbb{R}^2} f(x)$ s.t. $g(x)\leq 0$, then let $\mathcal{L}(x,\lambda) = \max_{\lambda\in\mathbb{R}} q(\lambda)$ be the Lagrangian dual problem where $q(\lambda) = \min_{x} ( f(x) + \lambda g(x) )$. 
+
+Consider $f(x) = x_1^2 + x_2^2$ and $g(x) = 1 - x_1 - x_2$.
+\begin{enumerate}
+    \item \textbf{\textit{(5 points).}} Plot the feasible region for the primal problem in $x_1$ and $x_2$ space. Let $(x^*_1,x^*_2)$ be the point in $(x_1,x_2)$ space which minimizes $f(x)$ s.t. $g(x )\leq0$. Plot $(x^*_1,x^*_2)$ on the plot which also contains the feasible region. 
+    % \textcolor{red}{what does it mean "optimal f curve"? Do you mean the level sets? Do you want them to solve the optimization problem?}
+    \item \textbf{\textit{(10 points).}} Plot sets $R = \{(y,z)|y=g(\omega),z=f(\omega)$ for $\omega \in \mathbb{R}^2\}$ and $F$ (set of feasible solution space for primal problem) in $(y,z)$ space where $y=g(\omega)$ and $z=f(\omega)$.
+    \item \textbf{\textit{(5 points).}} Let $y^*, z^*$ and $\lambda^*$ be the optimal values of $y=g(\omega)$, $z=f(\omega)$ and $\lambda$ respectively which optimizes $\mathcal{L}(\omega,\lambda)$. Plot the optimal solution $(y^*,z^*)$ on a plot. Also draw $ z + \lambda^* y = q(\lambda^*)$ in $y=g(\omega)$ and $z=f(\omega)$ space. 
+    \item \textbf{\textit{(10 points).}} Show that $q(\lambda)$ is a concave function on $S_q$ where $S_q = \{ \lambda | q(\lambda) \in \mathbb{R} \}$.
+\end{enumerate}
+\pagebreak
+\section{Support Vector Machine \textit{(30 Points)}}
+For linearly separable data, support vector machine tries to find two parallel hyperplanes parameterized by $(w,b)$ such that the margin between two classes is maximized. If the class indicator $y_i = 1$, then $w^Tx_i + b \geq 1$ and if the class indicator $y_i = -1$, then we have $w^Tx_i + b \leq -1$. Thus, a perfectly learned separator satisfies $y_i(w^Tx_i + b) \geq 1$. However, if the data is not fully separable then we allow for error margins $\epsilon_i > 0$. We update the primal problem for SVM as follows:
+$$\min_w \left(\frac{1}{2} \|w\|_2^2 + C\cdot\sum_i\epsilon_i\right)$$
+$$s.t. \hspace{0.2 cm}  y_i(w^Tx_i + b)\geq(1-\epsilon_i) \hspace{0.2 cm} \forall i \in \{1,...,n\}$$
+$$ \epsilon_i \geq 0 \hspace{0.2 cm} \forall i \in \{1,...,n\}$$
+\begin{enumerate}
+    \item \textbf{\textit{(7 points).}} Show that the Lagrangian Dual Problem of the SVM primal problem can be given by a quadratic program with Lagrange multipliers $\alpha_i \hspace{0.2 cm} \forall i \in \{1,...,n\} $. 
+    \item \textbf{\textit{(7 points).}} Show that for the primal and dual optimal solutions, the Lagrange multiplier $\alpha_i$ is non-zeros for samples where $y_i(W^Tx_i+b)\leq1$.
+\end{enumerate}
+Now consider the \hyperlink{https://archive.ics.uci.edu/ml/datasets/Diabetic+Retinopathy+Debrecen+Data+Set}{ \textcolor{violet}{diabetic retinopathy dataset}} (provided in the assignment zip file) which contains features extracted from the Messidor image set to predict whether an image contains signs of diabetic retinopathy or not. All features represent either a detected lesion, a descriptive feature of a anatomical part or an image-level descriptor. We will use \hyperlink{https://docs.python.org/3/}{\textcolor{violet}{Python 3.x}} for this part of the problem.
+\begin{enumerate}[resume]
+    \item Read the data from the CSV into a numpy array (use appropriate datatype). Split the dataset into a training set and a testing set with ratio $|training|:|testing| = 3:2$.
+    \item \textbf{\textit{(4 points).}} Use \hyperlink{https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html}{\textcolor{violet}{scikit-learn's SVM}} model with ``linear" kernel, $C=0$ and default values for other parameters to fit the training set for predicting the ``class\_label" given in the dataset.  Report training accuracy, testing accuracy and the learned weights $w^*$.
+    \item \textbf{\textit{(4 points).}} Plot $C$ vs the sum of training errors values $\sum_i\epsilon_i$ for each $C \in [0,1000]$. What do you observe? Comment on your observations.
+    \item \textbf{\textit{(4 points).}} Now, plot $C$ vs the testing accuracy. Which value of $C$ would have been optimal for this dataset? Comment on your findings.
+    \item \textbf{\textit{(4 points).}} Attempt anyone of the following:
+    \begin{enumerate}
+        \item \textbf{\textit{(4 points).}} Let's choose the value of $C$ to be the optimal one you found in the previous part. Let's change the kernel to ``poly" and play with the $degree$ of the polynomial. For what value of the $degree$ of the polynomial kernel do you find achieves the best testing accuracy? Comment on your findings. (Plot $degree$ vs testing accuracy, and include $degree$ vs training accuracy on the same plot.)
+    \\
+\textit{\textbf{OR}}
+        \item \textbf{\textit{(4 points).}} Let's choose the value of $C$ to be the optimal one you found in the previous part. Let's change the kernel to ``rbf" and play with the $gamma$ parameter. For what value of the $gamma$ do you find achieves the best testing accuracy? Comment on your findings. (Plot $gamma$ vs testing accuracy, and include $gamma$ vs training accuracy on the same plot.)
+    \end{enumerate}
+   
+    
+    % \item Let's consider we do not want to allow for error margins.
+\end{enumerate}
+\pagebreak
+\section{Kernels \textit{(20 Points)}}
+\begin{enumerate}
+    \item \textbf{\textit{(5 points).}} Consider $l_2$ regularized logistic regression with loss function $$ \mathcal{L}(f,\theta_0)=\sum_{i=1}^n \ln(1+\exp(-y_i(f(\mathbf{x}_i)+\theta_0)) + \lambda\|f\|_{\mathcal{H}}^2 $$where $y_i\in\{-1,1\}, f(\mathbf{x})=\theta^\top\mathbf{x}$,  and $\|f\|_{\mathcal{H}}^2= \theta^\top\theta$. 
+    Define the reproducing kernel Hilbert space $\mathcal{H}$. Using the representer theorem, what do you know about the optimal solution? 
+
+    \item \textbf{\textit{(15 points).}} Suppose we have two kernels $k_1$ and $k_2$, then prove/disprove that following are valid kernels:
+    \begin{enumerate}
+        \item \textbf{\textit{(3 points).}} $k(x,z) = \alpha k_1(x,z) + \beta k_2(x,z)$ for $\alpha,\beta \geq 0$ 
+        \item \textbf{\textit{(3 points).}} $k(x,z) = k_1(x,z)k_2(x,z)$
+        \item \textbf{\textit{(3 points).}} $k(x,z) = f(x)f(z)$ for $f:\mathcal{X}\to \mathbb{R}$
+        \item \textbf{\textit{(3 points).}} $k(x,z) = f(k_1(x,z))$ for $f$ a polynomial with positive cofficients
+        \item \textbf{\textit{(3 points).}} $k(x,z) = e^{-\alpha||x-z||_2^2}$
+    \end{enumerate}
+    
+\end{enumerate}
+
+
+
+
+\end{document}
