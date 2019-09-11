@@ -1,4 +1,4 @@
-DUKE COMPSCI671 Machine Learning
-HW code
-Lecture Notes
-Discussion 
+## DUKE COMPSCI671 Machine Learning
+**Professor Cynthia Rudin**
+
+This repository contains lecture notes, discussion problems and HW solutions. 
